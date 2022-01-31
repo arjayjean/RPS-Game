@@ -27,12 +27,9 @@ def rps():
     clear()
 
 
-# PLAYERS
+# PLAYER'S NAME CONTAINER
 cpu = "CPU"
 p1 = ""
-
-# PLAYER 1'S NAME CONTAINER
-player1 = []
 
 
 # GAME INTRO
@@ -46,8 +43,9 @@ def intro():
 
 
     # PLAYER 1
+    global p1 
     p1 = input("What is your name?: ")
-    player1.append(p1)
+    #player1.append(p1)
 
     clear()
     delay(2)
@@ -114,7 +112,7 @@ def rpsGame():
         # SCOREBOARD
         def score():
             print("Score:\n")
-            print(player1[0] + ": " + str(p1Points))
+            print(p1 + ": " + str(p1Points))
             print(cpu + ": " + str(cpuPoints))
             delay(3)
             clear()
@@ -142,7 +140,7 @@ def rpsGame():
         
 
         # HOW TO WIN
-        p1wins = playersChoices + ": " + player1[0] + " Wins!"
+        p1wins = playersChoices + ": " + p1 + " Wins!"
         cpuWins = playersChoices + ": " + cpu + " Wins!"
         tieGame = playersChoices + ": It's a TIE!!"
 
@@ -198,7 +196,7 @@ def rpsGame():
 
         # CHAMPION ANNOUNCEMENT
         if p1Points == 2:
-            print(player1[0] + " is the CHAMPION\n")
+            print(p1 + " is the CHAMPION\n")
             score()
             print("Thank you for playing! See you next time!")
             delay(3)
