@@ -10,4 +10,3 @@ def delay(x):
 def clear(): 
     os.system("clear")
 
-
