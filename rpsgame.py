@@ -12,23 +12,15 @@ def clear():
     os.system("clear")
 
 
-# RPS COUNTDOWN
-def rps():
-    clear()
-    print("Rock...")
-    delay(.5)
-    print("Paper...")
-    delay(.5)
-    print("Scissors...")
-    delay(.5)
-    clear()
-    print("SHOOT!!!")
-    delay(1)
-    clear()
+# RPS CADENCE
+def rps(*cadence):
+    for rps in cadence:
+        clear()
+        print(f'{rps}')
+        delay(.5)
 
 
 # PLAYER'S NAME CONTAINER
-cpu = "CPU"
 p1 = ""
 
 
@@ -45,7 +37,7 @@ def intro():
     # PLAYER 1
     global p1 
     p1 = input("What is your name?: ")
-    #player1.append(p1)
+
 
     clear()
     delay(2)
@@ -57,22 +49,25 @@ def intro():
 
 
     # INSTRUCTIONS
-    delay(2)
-    print("During this game, you will be playing against the " + cpu + ".")
-    delay(4)
-    clear()
+    def instruction(x):
+        delay(2)
+        print(x)
+        delay(4)
+        clear()
+
+    instruction("During this game, you will be playing against the CPU.")
+
+    instruction("The two of you will each randomly choose one of three choices...")
 
     delay(2)
-    print("The two of you will each randomly choose one of three choices...")
-    delay(4)
-    clear()
 
-    delay(2)
-    print("Rock = R\n")
-    delay(1)
-    print("Paper = P\n")
-    delay(1)
-    print("Scissors = S")
+    def picks(*options):
+        for pick in options:
+            print(f'{pick}\n')
+            delay(1)
+
+    picks('Rock = R', 'Paper = P', 'Scissors = S')
+
     delay(2)
     clear()
 
@@ -113,14 +108,15 @@ def rpsGame():
         def score():
             print("Score:\n")
             print(p1 + ": " + str(p1Points))
-            print(cpu + ": " + str(cpuPoints))
+            print("CPU: " + str(cpuPoints))
             delay(3)
             clear()
 
 
         # ROCK, PAPER, SCISSORS FUNCTION
-        rps()
-
+        rps('Rock...', 'Paper...', 'Scissors...', 'SHOOT!!!')  
+        delay(.5) 
+        clear()
 
         # PLAYER'S CHOICES
         p1Choice = ""
@@ -141,7 +137,7 @@ def rpsGame():
 
         # HOW TO WIN
         p1wins = playersChoices + ": " + p1 + " Wins!"
-        cpuWins = playersChoices + ": " + cpu + " Wins!"
+        cpuWins = playersChoices + ": CPU Wins!"
         tieGame = playersChoices + ": It's a TIE!!"
 
 
@@ -203,7 +199,7 @@ def rpsGame():
             clear()
             break
         elif cpuPoints == 2:
-            print(cpu + " is the CHAMPION\n")
+            print("CPU is the CHAMPION\n")
             score()
             print("Thank you for playing! See you next time!")
             delay(3)
