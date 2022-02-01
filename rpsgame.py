@@ -12,14 +12,6 @@ def clear():
     os.system("clear")
 
 
-# RPS CADENCE
-def rps(*cadence):
-    for rps in cadence:
-        clear()
-        print(f'{rps}')
-        delay(.5)
-
-
 # PLAYER'S NAME CONTAINER
 p1 = ""
 
@@ -84,11 +76,21 @@ def intro():
 
 
     # PREP SCREEN
-    print("GET READY!")
+    print("GET READY!!!")
     delay(5)
     clear()
 
 intro()
+
+
+# RPS CADENCE
+def rps(*cadence):
+    for rps in cadence:
+        clear()
+        print(f'{rps}')
+        delay(.5)
+    delay(1) 
+    clear()
 
 
 # THE GAME FUNCTION
@@ -115,8 +117,6 @@ def rpsGame():
 
         # ROCK, PAPER, SCISSORS FUNCTION
         rps('Rock...', 'Paper...', 'Scissors...', 'SHOOT!!!')  
-        delay(.5) 
-        clear()
 
         # PLAYER'S CHOICES
         p1Choice = ""
