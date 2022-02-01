@@ -135,59 +135,41 @@ def rpsGame():
         delay(2)
         
 
-        # HOW TO WIN
+        # PLAYER'S WINNING PRESENTATION
         p1wins = playersChoices + ": " + p1 + " Wins!"
         cpuWins = playersChoices + ": CPU Wins!"
         tieGame = playersChoices + ": It's a TIE!!"
 
 
-        # PLAYER 1 WINS
-        if playersChoices == "R vs S":
-            print(p1wins)
-            p1Points += 1
-            delay(3)
-            clear()
-        elif playersChoices == "S vs P":
-            print(p1wins)
-            p1Points += 1
-            delay(3)
-            clear()
-        elif playersChoices == "P vs R":
-            print(p1wins)
-            p1Points += 1
-            delay(3)
-            clear()
+        #HOW PLAYER'S WIN OR IF THERE IS A TIE
+        howP1wins = ["R vs S", "S vs P", "P vs R"]
+        howCpuWins = ["S vs R", "P vs S", "R vs P"]
+        ifTie = ["S vs S", "P vs P", "R vs R"]
 
-        # CPU WINS
-        elif playersChoices == "S vs R":
-            print(cpuWins)
-            cpuPoints += 1
-            delay(3)
-            clear()
-        elif playersChoices == "P vs S":
-            print(cpuWins)
-            cpuPoints += 1
-            delay(3)
-            clear()
-        elif playersChoices == "R vs P":
-            print(cpuWins)
-            cpuPoints += 1
-            delay(3)
-            clear()
 
+        # HOW PLAYER 1 WINS
+        for wP1 in howP1wins: 
+            if playersChoices == wP1:
+                print(p1wins)
+                p1Points += 1
+                delay(3)
+                clear()
+        
+        # HOW CPU WINS
+        for wCpu in howCpuWins:
+            if playersChoices == wCpu:
+                print(cpuWins)
+                cpuPoints += 1
+                delay(3)
+                clear()
+            
         # WHEN A TIE OCCURS
-        elif playersChoices == "S vs S":
-            print(tieGame)
-            delay(3)
-            clear()
-        elif playersChoices == "P vs P":
-            print(tieGame)
-            delay(3)
-            clear()
-        elif playersChoices == "R vs R":
-            print(tieGame)
-            delay(3)
-            clear()
+        for aTie in ifTie:
+            if playersChoices == aTie:
+                print(tieGame)
+                delay(3)
+                clear()
+        
 
 
         # CHAMPION ANNOUNCEMENT
