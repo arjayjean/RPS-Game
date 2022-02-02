@@ -146,7 +146,6 @@ def rpsGame():
         howCpuWins = ["S vs R", "P vs S", "R vs P"]
         ifTie = ["S vs S", "P vs P", "R vs R"]
 
-
         # HOW PLAYER 1 WINS
         for wP1 in howP1wins: 
             if playersChoices == wP1:
@@ -169,7 +168,6 @@ def rpsGame():
                 print(tieGame)
                 delay(3)
                 clear()
-        
 
 
         # CHAMPION ANNOUNCEMENT
@@ -188,6 +186,8 @@ def rpsGame():
             clear()
             break
 
+
+        # OVERALL SCORE
         score()
 
 rpsGame()
