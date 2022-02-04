@@ -163,6 +163,7 @@ def rpsGame():
                 clear()
             
         # WHEN A TIE OCCURS
+        
         for aTie in ifTie:
             if playersChoices == aTie:
                 print(tieGame)
