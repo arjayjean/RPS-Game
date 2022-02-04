@@ -94,23 +94,23 @@ def rps(*cadence):
 
 
 # THE GAME FUNCTION
-def rpsGame():
+def rps_game():
     # CHOICES
     choices = ["R", "P", "S"]
 
 
     # PLAYER'S POINTS
-    p1Points = 0
-    cpuPoints = 0
+    p1_points = 0
+    cpu_points = 0
 
 
-    while p1Points or cpuPoints != 2:
+    while p1_points or cpu_points != 2:
         
         # SCOREBOARD
         def score():
             print("Score:\n")
-            print(p1 + ": " + str(p1Points))
-            print("CPU: " + str(cpuPoints))
+            print(p1 + ": " + str(p1_points))
+            print("CPU: " + str(cpu_points))
             delay(3)
             clear()
 
@@ -119,67 +119,67 @@ def rpsGame():
         rps('Rock...', 'Paper...', 'Scissors...', 'SHOOT!!!')  
 
         # PLAYER'S CHOICES
-        p1Choice = ""
-        cpuChoice = ""
-        playersChoices = ""
+        p1_choice = ""
+        cpu_choice = ""
+        players_choices = ""
 
-        cpuChoice = random.choice(choices)
+        cpu_choice = random.choice(choices)
         
         print("Rock, Paper, or Scissors?")
-        p1Choice = input().upper()
+        p1_choice = input().upper()
         
 
-        playersChoices = p1Choice + " vs " + cpuChoice
+        players_choices = p1_choice + " vs " + cpu_choice
 
         clear()
         delay(2)
         
 
         # PLAYER'S WINNING PRESENTATION
-        p1wins = playersChoices + ": " + p1 + " Wins!"
-        cpuWins = playersChoices + ": CPU Wins!"
-        tieGame = playersChoices + ": It's a TIE!!"
+        p1_wins = players_choices + ": " + p1 + " Wins!"
+        cpu_wins = players_choices + ": CPU Wins!"
+        tie_game = players_choices + ": It's a TIE!!"
 
 
         #HOW PLAYER'S WIN OR IF THERE IS A TIE
-        howP1wins = ["R vs S", "S vs P", "P vs R"]
-        howCpuWins = ["S vs R", "P vs S", "R vs P"]
-        ifTie = ["S vs S", "P vs P", "R vs R"]
+        how_p1_wins = ["R vs S", "S vs P", "P vs R"]
+        how_cpu_wins = ["S vs R", "P vs S", "R vs P"]
+        if_tie = ["S vs S", "P vs P", "R vs R"]
 
         # HOW PLAYER 1 WINS
-        for wP1 in howP1wins: 
-            if playersChoices == wP1:
-                print(p1wins)
-                p1Points += 1
+        for w_p1 in how_p1_wins: 
+            if players_choices == w_p1:
+                print(p1_wins)
+                p1_points += 1
                 delay(3)
                 clear()
         
         # HOW CPU WINS
-        for wCpu in howCpuWins:
-            if playersChoices == wCpu:
-                print(cpuWins)
-                cpuPoints += 1
+        for w_cpu in how_cpu_wins:
+            if players_choices == w_cpu:
+                print(cpu_wins)
+                cpu_points += 1
                 delay(3)
                 clear()
             
         # WHEN A TIE OCCURS
         
-        for aTie in ifTie:
-            if playersChoices == aTie:
-                print(tieGame)
+        for a_tie in if_tie:
+            if players_choices == a_tie:
+                print(tie_game)
                 delay(3)
                 clear()
 
 
         # CHAMPION ANNOUNCEMENT
-        if p1Points == 2:
+        if p1_points == 2:
             print(p1 + " is the CHAMPION\n")
             score()
             print("Thank you for playing! See you next time!")
             delay(3)
             clear()
             break
-        elif cpuPoints == 2:
+        elif cpu_points == 2:
             print("CPU is the CHAMPION\n")
             score()
             print("Thank you for playing! See you next time!")
@@ -191,4 +191,4 @@ def rpsGame():
         # OVERALL SCORE
         score()
 
-rpsGame()
+rps_game()
