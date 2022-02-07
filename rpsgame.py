@@ -1,4 +1,3 @@
-from email import message
 import os
 import time
 import random
@@ -9,8 +8,8 @@ def clear():
 
 
 # DELAY TIME
-def delay(x):
-    time.sleep(x)
+def delay(sec):
+    time.sleep(sec)
     
 
 # PLAYER'S NAME CONTAINER
@@ -27,21 +26,21 @@ def intro():
     
     
     # SCREEN MESSAGES FUNCTION
-    def messages(msg, sec1, sec2):
+    def screen(message, sec1, sec2):
         delay(sec1)
-        print(msg)
+        print(message)
         delay(sec2)
         clear()
     
     
     # WELCOME SCREEN
-    messages(f'Welcome to Rock, Paper, Scissors, {P1}!', 0, 3)
+    screen(f'Welcome to a game of Rock, Paper, Scissors, {P1}!', 0, 3)
 
 
     # INSTRUCTIONS
-    messages("During this game, you will be playing against the CPU.", 2, 3)
+    screen("During this game, you will be playing against the CPU.", 2, 3)
 
-    messages("The two of you will each randomly choose one of three choices...", 2, 3)
+    screen("The two of you will each randomly choose one of three choices...", 2, 3)
 
     delay(2)
 
@@ -56,15 +55,15 @@ def intro():
     
 
     # BEST 2 OUT OF 3 MESSAGE
-    messages("Best 2 out of 3 WINS!!!", 2, 3)
+    screen("Best 2 out of 3 WINS!!!", 2, 3)
 
 
     # WAITING SCREEN
-    messages("LOADING...", 0, 10)
+    screen("LOADING...", 0, 10)
     clear
 
     # PREP SCREEN
-    messages("GET READY!!!", 0, 5)
+    screen("GET READY!!!", 0, 5)
     
 
 intro()
@@ -83,8 +82,6 @@ def rps(*cadence):
 # THE GAME FUNCTION
 def rps_game():
 
-    # CHOICES
-    choices = ["R", "P", "S"]
 
 
     # PLAYER'S POINTS
@@ -106,17 +103,18 @@ def rps_game():
         # ROCK, PAPER, SCISSORS FUNCTION
         rps('Rock...', 'Paper...', 'Scissors...', 'SHOOT!!!')  
 
-        # PLAYER'S CHOICES
-        p1_choice = ""
-        cpu_choice = ""
-        players_choices = ""
 
-        cpu_choice = random.choice(choices)
+        # CPU'S CHOICE
+        cpu_choices = ["R", "P", "S"]
+        cpu_choice = random.choice(cpu_choices)
         
+
+        #PLAYER 1'S CHOICE
         print("Rock, Paper, or Scissors?")
         p1_choice = input().upper()
         
 
+        # PLAYER'S CHOICES CONTAINER
         players_choices = f'{p1_choice} vs {cpu_choice}'
 
         clear()
@@ -127,40 +125,40 @@ def rps_game():
         def who_won(winner):
             print(f'{players_choices}: {winner} Wins!')
 
-        def tie_game():
+        def present_tie():
             print(f'{players_choices}: It is a TIE!!')
 
 
-        #HOW PLAYER'S WIN OR IF THERE IS A TIE
+        # HOW PLAYER'S WIN OR IF THERE IS A TIE GAME
         how_p1_wins = ["R vs S", "S vs P", "P vs R"]
         how_cpu_wins = ["S vs R", "P vs S", "R vs P"]
-        if_tie = ["S vs S", "P vs P", "R vs R"]
+        tie_game = ["S vs S", "P vs P", "R vs R"]
 
         # HOW PLAYER 1 WINS
-        for w_p1 in how_p1_wins: 
-            if players_choices == w_p1:
+        for p1_way in how_p1_wins: 
+            if players_choices == p1_way:
                 who_won(P1)
                 p1_points += 1
                 delay(3)
                 clear()
         
         # HOW CPU WINS
-        for w_cpu in how_cpu_wins:
-            if players_choices == w_cpu:
+        for cpu_way in how_cpu_wins:
+            if players_choices == cpu_way:
                 who_won(CPU)
                 cpu_points += 1
                 delay(3)
                 clear()
             
         # WHEN A TIE OCCURS
-        
-        for a_tie in if_tie:
-            if players_choices == a_tie:
-                tie_game()
+        for tie in tie_game:
+            if players_choices == tie:
+                present_tie()
                 delay(3)
                 clear()
 
 
+        # CHAMPION ANNOUNCEMENT
         def champion(champ):
             print(f'{champ} is the CHAMPION\n')
             score()
@@ -168,8 +166,6 @@ def rps_game():
             delay(3)
             clear()
 
-
-        # CHAMPION ANNOUNCEMENT
         if p1_points == 2:
             champion(P1)
             break
