@@ -1,55 +1,47 @@
-import random
+from email import message
 import os
 import time
-
-# DELAY TIME
-def delay(x):
-    time.sleep(x)
-
+import random
 
 # CLEAR CONSOLE
 def clear(): 
     os.system("clear")
 
 
+# DELAY TIME
+def delay(x):
+    time.sleep(x)
+    
+
 # PLAYER'S NAME CONTAINER
-p1 = ""
+clear()
+delay(2)
+P1 = input("What is your name?: ")
+CPU = "CPU"
 
 
 # GAME INTRO
 def intro():
     clear()
     delay(1)
-    print("Welcome to Rock, Paper, Scissors!")
-    delay(3)
-    clear()
-    delay(2)
-
-
-    # PLAYER 1
-    global p1 
-    p1 = input("What is your name?: ")
-
-
-    clear()
-    delay(2)
-
-    # GREETINGS
-    print("Nice to meet you " + p1 + "!")
-    delay(3)
-    clear()
+    
+    
+    # SCREEN MESSAGES FUNCTION
+    def messages(msg, sec1, sec2):
+        delay(sec1)
+        print(msg)
+        delay(sec2)
+        clear()
+    
+    
+    # WELCOME SCREEN
+    messages(f'Welcome to Rock, Paper, Scissors, {P1}!', 0, 3)
 
 
     # INSTRUCTIONS
-    def instruction(x):
-        delay(2)
-        print(x)
-        delay(4)
-        clear()
+    messages("During this game, you will be playing against the CPU.", 2, 3)
 
-    instruction("During this game, you will be playing against the CPU.")
-
-    instruction("The two of you will each randomly choose one of three choices...")
+    messages("The two of you will each randomly choose one of three choices...", 2, 3)
 
     delay(2)
 
@@ -59,26 +51,21 @@ def intro():
             delay(1)
 
     picks('Rock = R', 'Paper = P', 'Scissors = S')
-
     delay(2)
     clear()
+    
 
-    delay(2)
-    print("Best 2 out of 3 WINS!!!")
-    delay(3)
-    clear()
+    # BEST 2 OUT OF 3 MESSAGE
+    messages("Best 2 out of 3 WINS!!!", 2, 3)
 
 
     # WAITING SCREEN
-    print("LOADING...")
-    delay(10)
-    clear()
-
+    messages("LOADING...", 0, 10)
+    clear
 
     # PREP SCREEN
-    print("GET READY!!!")
-    delay(5)
-    clear()
+    messages("GET READY!!!", 0, 5)
+    
 
 intro()
 
@@ -95,6 +82,7 @@ def rps(*cadence):
 
 # THE GAME FUNCTION
 def rps_game():
+
     # CHOICES
     choices = ["R", "P", "S"]
 
@@ -109,8 +97,8 @@ def rps_game():
         # SCOREBOARD
         def score():
             print("Score:\n")
-            print(p1 + ": " + str(p1_points))
-            print("CPU: " + str(cpu_points))
+            print(f'{P1}: {str(p1_points)}')
+            print(f'{CPU}: {str(cpu_points)}')
             delay(3)
             clear()
 
@@ -129,16 +117,18 @@ def rps_game():
         p1_choice = input().upper()
         
 
-        players_choices = p1_choice + " vs " + cpu_choice
+        players_choices = f'{p1_choice} vs {cpu_choice}'
 
         clear()
         delay(2)
         
 
-        # PLAYER'S WINNING PRESENTATION
-        p1_wins = players_choices + ": " + p1 + " Wins!"
-        cpu_wins = players_choices + ": CPU Wins!"
-        tie_game = players_choices + ": It's a TIE!!"
+        # PLAYER'S WINNING OR A TIE PRESENTATION
+        def who_won(winner):
+            print(f'{players_choices}: {winner} Wins!')
+
+        def tie_game():
+            print(f'{players_choices}: It is a TIE!!')
 
 
         #HOW PLAYER'S WIN OR IF THERE IS A TIE
@@ -149,7 +139,7 @@ def rps_game():
         # HOW PLAYER 1 WINS
         for w_p1 in how_p1_wins: 
             if players_choices == w_p1:
-                print(p1_wins)
+                who_won(P1)
                 p1_points += 1
                 delay(3)
                 clear()
@@ -157,7 +147,7 @@ def rps_game():
         # HOW CPU WINS
         for w_cpu in how_cpu_wins:
             if players_choices == w_cpu:
-                print(cpu_wins)
+                who_won(CPU)
                 cpu_points += 1
                 delay(3)
                 clear()
@@ -166,25 +156,25 @@ def rps_game():
         
         for a_tie in if_tie:
             if players_choices == a_tie:
-                print(tie_game)
+                tie_game()
                 delay(3)
                 clear()
 
 
+        def champion(champ):
+            print(f'{champ} is the CHAMPION\n')
+            score()
+            print("Thank you for playing! See you next time!")
+            delay(3)
+            clear()
+
+
         # CHAMPION ANNOUNCEMENT
         if p1_points == 2:
-            print(p1 + " is the CHAMPION\n")
-            score()
-            print("Thank you for playing! See you next time!")
-            delay(3)
-            clear()
+            champion(P1)
             break
         elif cpu_points == 2:
-            print("CPU is the CHAMPION\n")
-            score()
-            print("Thank you for playing! See you next time!")
-            delay(3)
-            clear()
+            champion(CPU)
             break
 
 
