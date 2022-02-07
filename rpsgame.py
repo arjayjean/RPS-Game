@@ -70,8 +70,8 @@ intro()
 
 
 # RPS CADENCE
-def rps(*cadence):
-    for rps in cadence:
+def cadence(*rps):
+    for rps in rps:
         clear()
         print(f'{rps}')
         delay(.5)
@@ -101,7 +101,7 @@ def rps_game():
 
 
         # ROCK, PAPER, SCISSORS FUNCTION
-        rps('Rock...', 'Paper...', 'Scissors...', 'SHOOT!!!')  
+        cadence('Rock...', 'Paper...', 'Scissors...', 'SHOOT!!!')  
 
 
         # CPU'S CHOICE
@@ -135,16 +135,16 @@ def rps_game():
         tie_game = ["S vs S", "P vs P", "R vs R"]
 
         # HOW PLAYER 1 WINS
-        for p1_way in how_p1_wins: 
-            if players_choices == p1_way:
+        for how_p1_won in how_p1_wins: 
+            if players_choices == how_p1_won:
                 who_won(P1)
                 p1_points += 1
                 delay(3)
                 clear()
         
         # HOW CPU WINS
-        for cpu_way in how_cpu_wins:
-            if players_choices == cpu_way:
+        for how_cpu_won in how_cpu_wins:
+            if players_choices == how_cpu_won:
                 who_won(CPU)
                 cpu_points += 1
                 delay(3)
