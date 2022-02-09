@@ -117,17 +117,16 @@ def rps_game():
 
         clear()
         delay(2)
-        
+
 
         # PLAYER'S WINNING OR A TIE PRESENTATION
-        def who_won(choice, winner, point):
+        def who_won(choice, winner):
             print(f'{choice}: {winner} Wins!')
-            sum(point, 1)
             delay(3)
             clear()
 
-        def present_tie(tie):
-            print(f'{tie}: It is a TIE!!')
+        def present_tie(choice):
+            print(f'{choice}: It is a TIE!!')
             delay(3)
             clear()
 
@@ -138,30 +137,23 @@ def rps_game():
         tie_game = ["S vs S", "P vs P", "R vs R"]
 
         # HOW PLAYER 1 WINS
-        # for how_p1_won in how_p1_wins: 
-        #     if players_choices == how_p1_won:
-        #         who_won(P1)
-        #         p1_points += 1
-        #         delay(3)
-        #         clear()
-        
+        for how_p1_won in how_p1_wins: 
+            if players_choices == how_p1_won:
+                who_won(how_p1_won, P1)
+                p1_points += 1
+
         # # HOW CPU WINS
-        # for how_cpu_won in how_cpu_wins:
-        #     if players_choices == how_cpu_won:
-        #         who_won(CPU)
-        #         cpu_points += 1
-        #         delay(3)
-        #         clear()
+        for how_cpu_won in how_cpu_wins:
+            if players_choices == how_cpu_won:
+                who_won(how_cpu_won, CPU)
+                cpu_points += 1
+
             
         # # WHEN A TIE OCCURS
-        # for tie in tie_game:
-        #     if players_choices == tie:
-        #         present_tie()
-        #         delay(3)
-        #         clear()
-        player1_won = [who_won(how_p1_won, P1, p1_points) for how_p1_won in how_p1_wins if players_choices == how_p1_won]
-        cpu_won = [who_won(how_cpu_won, CPU, cpu_points) for how_cpu_won in how_cpu_wins if players_choices == how_cpu_won]
-        tied_up = [present_tie(tie) for tie in tie_game if players_choices == tie]
+        for tie in tie_game:
+            if players_choices == tie:
+                present_tie(tie)
+
 
         # CHAMPION ANNOUNCEMENT
         def champion(champ):

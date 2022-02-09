@@ -30,7 +30,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/Arjay/Coding/Python/RPS-Game/venv"
+set -gx VIRTUAL_ENV "/Users/Arjay/Projects/RPS-Game/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

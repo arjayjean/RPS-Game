@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/Arjay/Coding/Python/RPS-Game/venv"
+VIRTUAL_ENV="/Users/Arjay/Projects/RPS-Game/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
